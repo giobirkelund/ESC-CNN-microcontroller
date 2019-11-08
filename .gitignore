@@ -10,3 +10,4 @@ report/status.pdf
 _minted-input/
 /test/data
 /test/out
+.DS_Store
