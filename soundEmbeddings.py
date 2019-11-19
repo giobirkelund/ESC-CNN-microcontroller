@@ -3,12 +3,7 @@ import openl3
 import soundfile as sf
 import numpy as np
 import os
-def ifExists(fileName):
-    if fileName in os.listdir(path):
-        return True
-    else: 
-        return False
-    
+
 def embedFiles(datasetPath, newDir):
     soundfiles = urbansound8k.load_dataset()
 
@@ -28,26 +23,21 @@ def loadfiles():
     dataset['embeddings'] = None
     # """print(dataset)
     for index, sample in dataset.iterrows():
-        
         path = embedding_path(sample,"/Users/giovannibirkelund/Documents/GitHub/ESC-CNN-microcontroller/data/embeddedSounds")
         data = np.load(path)
         emb = data['embedding']
         dataset.at[index,'embeddings'] = emb
-
     return dataset
 
 def main():
     myDataPath = "/Users/giovannibirkelund/Documents/GitHub/ESC-CNN-microcontroller/data/datasets/UrbanSound8K/"
     differentDir = "/Users/giovannibirkelund/Documents/GitHub/ESC-CNN-microcontroller/data/embeddedSounds/fold"
     
-    
-    
     # embedFiles(myDataPath,differentDir)
     dataFrame = loadfiles()
     print(dataFrame.loc[0,'embeddings'].shape)
     
-    
-    
+
 
 
     
